@@ -1,5 +1,7 @@
 .recordPanel {
     position: relative;
+    margin: auto;
+    margin-top: 70px;
     background-color: #EFF6F6; 
     border-radius: 40px;
     box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.2);
@@ -116,4 +118,117 @@
 .closeIcon:hover {
     color:#e76666;
     filter: drop-shadow(0px 0px 5px rgba(0,0,0,0.2));
+}
+
+/* FormPanel */
+
+.formPanel {
+    background-color: #EFF6F6;
+    height: 100%;
+    padding: 20px;
+    padding-left: 30px;
+    overflow: scroll;
+}
+
+.formTitle {
+    font-size: 35px;
+    color: #4f4c52;
+    font-weight: 500;
+    border-bottom: 2px solid #b5b1b9;
+    padding-bottom: 5px;
+}
+
+
+/* Field */
+
+.fieldContainer {
+    padding-bottom: 8px;
+    padding-top: 8px;
+    border-bottom: 1px solid #d5d1d9;
+}
+
+.fieldLabel {
+    position: inherit;
+    display: block;
+    width: 100%;
+    color: #4f4c52;
+    font-size: 17px;
+    padding-left: 7px;
+}
+
+.inputField {
+    position: relative;
+    border: 1px solid #a09ea1;
+    width: 85%;
+    height: 30px;
+    border-radius: 7px;
+    padding-left: 7px;
+    margin: 0px 7px;
+    background-color: #f5f5f5;
+    color: #a09ea1;
+}
+
+.deleteButton {
+    padding-left: 5px;
+}
+
+.deleteIcon {
+    color: #a09ea1;
+    height: 15px;
+    width: 15px;
+}
+
+.deleteIcon:hover {
+    color: #4f4c52;
+    cursor: pointer;
+}
+
+.newField {
+    border: 1px solid #a09ea1;
+    width: 85%;
+    height: 30px;
+    border-radius: 7px;
+    padding-left: 7px;
+    margin: 0px 7px;
+    background-color: #f5f5f5;
+    color: #a09ea1;
+}
+.saveButton {
+    padding-left: 7px;
+}
+
+.saveIcon {
+    color: #a09ea1;
+    height: 15px;
+    width: 15px;
+}
+
+.saveIcon:hover {
+    color: #8dcc9d;
+    cursor: pointer;
+}
+
+.postFormField {
+    margin-top: 30px;
+}
+
+.saveFormButton {
+    display: block;
+    margin: auto;
+    margin-top: 20px;
+    color: #EFF6F6;
+    height: 40px;
+    width: 100px;
+    border-radius: 20px;
+    background-color: rgb(178, 243, 243);
+    background-image: linear-gradient(to bottom right, #8dcc9d, rgb(178, 243, 243));
+    box-shadow: 0 0 5px rgba(0,0,0,0.2);
+    transition: all 0.4s linear;
+}
+
+.saveFormButton:hover {
+    background-image: none;
+    background-color: #8dcc9d;
+    cursor: pointer;
+    box-shadow: none;
 }

@@ -2,7 +2,8 @@
 
 import React, { useState } from 'react';
 import Field from './Field';
-import { FaPlus } from 'react-icons/fa';
+import { FaPlus, FaCheck } from 'react-icons/fa';
+import styles from './styles.module.css';
 
 export default function FormPanel() {
   const [fields, setFields] = useState([
@@ -11,6 +12,9 @@ export default function FormPanel() {
     { id: 'sexo', label: 'Sexo', value: '' },
     { id: 'estatura', label: 'Estatura', value: '' }
   ]);
+  const [newField, setNewField] = useState(false);
+  const [newFieldName, setNewFieldName] = useState("Vacío")
+
 
   const updateField = (idx) => (e) => {
     const updated = [...fields];
@@ -23,13 +27,19 @@ export default function FormPanel() {
   };
 
   const addField = () => {
-    const newId = `field_${Date.now()}`;
-    setFields([...fields, { id: newId, label: 'Nuevo', value: '' }]);
+    setNewField(true);
+  };
+
+  const saveField = () => {
+    const newId = `field_${newFieldName}`;
+    setFields([...fields, { id: newId, label: newFieldName, value: '' }]);
+    setNewField(false);
+    setNewFieldName("Vacío");
   };
 
   return (
-    <div className="flex-1 bg-gray-100 rounded-md p-6 shadow-lg">
-      <h2 className="text-xl font-semibold text-gray-800 border-b border-gray-300 pb-2">Formato</h2>
+    <div className={styles.formPanel}>
+      <h2 className={styles.formTitle}>Formato</h2>
       {fields.map((f, i) => (
         <Field
           key={f.id}
@@ -40,13 +50,28 @@ export default function FormPanel() {
           onDelete={deleteField(i)}
         />
       ))}
-      <div className="my-6 border-t border-gray-300"></div>
-      <button
-        onClick={addField}
-        className="mx-auto block w-10 h-10 rounded-full border border-gray-400 flex items-center justify-center hover:bg-gray-200"
-      >
-        <FaPlus className="text-gray-600" />
-      </button>
+      {newField ? (
+        <div className={styles.postFormField}>
+        <input placeholder="Nuevo campo" className={styles.newField} onChange={(e) => setNewFieldName(e.target.value)}></input>
+        <button onClick={saveField} className={styles.saveButton}>
+          <FaCheck className={styles.saveIcon} />
+        </button>
+        </div>
+      ) : (
+        <div className={styles.postFormField}>  
+        <button
+          onClick={addField}
+          className="mx-auto block w-10 h-10 rounded-full border border-gray-400 flex items-center justify-center cursor-pointer hover:bg-gray-200"
+        >
+          <FaPlus className="text-gray-600" />
+        </button>
+        <button
+          className={styles.saveFormButton}
+        >
+          <p className='font-semibold'>Guardar</p>
+        </button>
+        </div>
+      )}
     </div>
   );
 }
